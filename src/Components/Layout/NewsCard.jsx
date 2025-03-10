@@ -4,7 +4,7 @@ const NewsCard = ({ news }) => {
   const { title, author, published_date, thumbnail_url, details, rating, total_view } = news;
 
   return (
-    <div className="card border border-gray-200 shadow-md rounded-lg p-4 space-y-4 bg-white">
+    <div className="card border border-gray-200 shadow-md rounded-lg p-4 my-5 space-y-4 bg-white">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
           <img src={author.img} alt={author.name} className="w-10 h-10 rounded-full" />
@@ -18,8 +18,8 @@ const NewsCard = ({ news }) => {
 
       <h2 className="font-bold text-lg text-gray-900">{title}</h2>
 
-      <div>
-        <img src={thumbnail_url} alt={title} className="w-full h-[500px] object-cover rounded-lg" />
+      <div className="w-full h-[500px]">
+        <img src={thumbnail_url} alt={title} className=" w-full h-full object-cover rounded-lg" />
       </div>
 
       <p className="text-gray-700 text-sm">

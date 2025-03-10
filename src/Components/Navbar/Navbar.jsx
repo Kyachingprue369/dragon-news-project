@@ -1,16 +1,17 @@
 import React from 'react';
 import user from '../../assets/user.png'
+import { Link, NavLink } from 'react-router-dom';
 
 
 const Navbar = () => {
   const links = <div className='flex gap-3 text-gray-500'>
-    <li><a>Home</a></li>
-    <li><a>About</a></li>
-    <li><a>Career</a></li>
+    <li><NavLink to="/">Home</NavLink></li>
+    <li><NavLink to="/about">About</NavLink></li>
+    <li><NavLink to="/career">Career</NavLink></li>
   </div>
   return (
     <div className='w-11/12 mx-auto my-7'>
-      <div className="navbar bg-base-100">
+      <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -30,7 +31,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end items-center gap-4">
           <img src={user} alt="" />
-          <button className="bg-gray-800 font-bold text-white py-2 px-7">Login</button>
+          <Link to="/auth/login" className="bg-gray-800 font-bold text-white py-2 px-7">Login</Link>
         </div>
       </div>
     </div>
