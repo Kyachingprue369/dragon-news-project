@@ -1,9 +1,12 @@
-import React from 'react';
-import user from '../../assets/user.png'
+import React, { useContext } from 'react';
+import PhotoUser from '../../assets/user.png'
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 
 const Navbar = () => {
+
+  const { users, logOutUser } = useContext(AuthContext);
   const links = <div className='flex gap-3 text-gray-500'>
     <li><NavLink to="/">Home</NavLink></li>
     <li><NavLink to="/about">About</NavLink></li>
@@ -30,8 +33,20 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end items-center gap-4">
-          <img src={user} alt="" />
-          <Link to="/auth/login" className="bg-gray-800 font-bold text-white py-2 px-7">Login</Link>
+          {
+            users && users?.email ? (<div className='flex items-center gap-4'>
+              <div>
+                <img src={users?.photo} alt="" />
+                <p className='font-black'>{users.email}</p>
+              </div>
+              <button onClick={logOutUser} className="bg-gray-800 font-bold text-white py-2 px-7">Log Out</button>
+            </div>)
+              :
+              <div className='flex items-center gap-4'>
+                <img src={PhotoUser} alt="" />
+                <Link to="/auth/login" className="bg-gray-800 font-bold text-white py-2 px-7">Login</Link>
+              </div>
+          }
         </div>
       </div>
     </div>

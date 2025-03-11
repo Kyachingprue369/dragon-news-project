@@ -1,4 +1,5 @@
 import { FaRegBookmark, FaRegEye, FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
   const { title, author, published_date, thumbnail_url, details, rating, total_view } = news;
@@ -18,13 +19,13 @@ const NewsCard = ({ news }) => {
 
       <h2 className="font-bold text-lg text-gray-900">{title}</h2>
 
-      <div className="w-full h-[500px]">
-        <img src={thumbnail_url} alt={title} className=" w-full h-full object-cover rounded-lg" />
+      <div className="w-full h-[400px]">
+        <img src={thumbnail_url} alt={title} className=" w-full h-full mx-auto object-cover" />
       </div>
 
       <p className="text-gray-700 text-sm">
         {details.length > 150 ? `${details.slice(0, 150)}...` : details}
-        <span className="text-blue-500 cursor-pointer font-semibold"> Read More</span>
+        <Link to={`/news/${news._id}`} className="text-blue-500 cursor-pointer font-semibold"> Read More</Link>
       </p>
 
       <div className="flex justify-between items-center border-t pt-3 text-gray-600 text-sm">
