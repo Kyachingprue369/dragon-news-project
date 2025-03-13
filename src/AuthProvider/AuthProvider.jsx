@@ -5,16 +5,20 @@ import auth from '../Firebase/Firebase.config';
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [users, setUser] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const createSignUp = (email, password) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   }
 
   const userSignIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   }
 
   const logOutUser = () => {
+    setLoading(true)
     return signOut(auth);
   }
 
@@ -22,13 +26,16 @@ const AuthProvider = ({ children }) => {
     users,
     setUser,
     createSignUp,
+    loading,
     userSignIn,
     logOutUser,
+
   }
 
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       unSubscribe();
