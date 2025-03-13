@@ -35,9 +35,9 @@ const Navbar = () => {
         <div className="navbar-end items-center gap-4">
           {
             users && users?.email ? (<div className='flex items-center gap-4'>
-              <div>
-                <img src={users?.photo} alt="" />
-                <p className='font-black'>{users.email}</p>
+              <div className='flex items-center gap-3'>
+                <p className='text-xl font-bold'>{users.displayName}</p>
+                <img className='w-10 h-10 rounded-full mx-auto' src={users?.photoURL} alt="" />
               </div>
               <button onClick={logOutUser} className="bg-gray-800 font-bold text-white py-2 px-7">Log Out</button>
             </div>)
